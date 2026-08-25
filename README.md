@@ -1,7 +1,6 @@
 # herdr-close-other-panes
 
-A [herdr](https://herdr.dev) plugin that closes every pane in the current tab except the
-one you invoked it from.
+A [herdr](https://herdr.dev) plugin that closes every pane in the current tab except the one you invoked it from.
 
 ## Install
 
@@ -13,8 +12,9 @@ Requires herdr 0.8.0 or newer.
 
 ## Use
 
-The action shows up in the command palette as **Close other panes**. To bind it to a key,
-add this to your herdr config (a plugin cannot contribute keybindings itself):
+The action shows up in the command palette as **Close other panes**. It closes every other pane in the current tab and leaves other tabs alone. Panes close without confirmation and whatever is running in them is terminated, so bind it with care.
+
+To bind this action to a key, add this to your herdr config:
 
 ```toml
 [[keys.command]]
