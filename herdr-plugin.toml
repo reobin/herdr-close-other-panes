@@ -1,0 +1,14 @@
+id = "reobin.close-other-panes"
+name = "Close other panes"
+version = "0.1.0"
+
+min_herdr_version = "0.8.0"
+description = "Close every pane in the current tab except the one you invoked it from"
+platforms = ["linux", "macos"]
+
+[[actions]]
+id = "close-others"
+title = "Close other panes"
+description = "Close every pane in this tab except this one"
+contexts = ["pane"]
+command = ["sh", "close-other-panes.sh"]
