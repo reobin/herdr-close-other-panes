@@ -20,14 +20,14 @@ To bind this action to a key, add this to your herdr config:
 [[keys.command]]
 key = "prefix+o"
 type = "plugin_action"
-command = "reobin.close-other-panes.close-others"
+command = "herdr-close-other-panes.close-others"
 description = "close other panes"
 ```
 
 To invoke it without a keybinding:
 
 ```bash
-herdr plugin action invoke reobin.close-other-panes.close-others
+herdr plugin action invoke herdr-close-other-panes.close-others
 ```
 
 ## License
