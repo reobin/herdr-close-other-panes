@@ -31,13 +31,18 @@ others="$(printf '%s\n' "$pane_ids" | grep -vxF "$HERDR_PANE_ID")" || others=""
 
 [ -n "$others" ] || exit 0
 
-printf '%s\n' "$others" | {
-  status=0
-  while IFS= read -r pane_id; do
+status=0
+pids=""
+for pane_id in $others; do
+  (
     if ! output="$("$herdr" pane close "$pane_id" </dev/null 2>&1)"; then
-      echo "close-other-panes: failed to close $pane_id: $output" >&2
-      status=1
+      printf '%s\n' "close-other-panes: failed to close $pane_id: $output" >&2
+      exit 1
     fi
-  done
-  exit "$status"
-}
+  ) &
+  pids="$pids $!"
+done
+for pid in $pids; do
+  wait "$pid" || status=1
+done
+exit "$status"
